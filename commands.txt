@@ -1,0 +1,8 @@
+uv init
+uv add "fastapi[standard]" "sqlalchemy[asyncio]" alembic python-decouple aiomysql
+uv sync
+uv run alembic init -t async alembic
+uv run alembic revision --autogenerate -m "create table"
+uv run alembic upgrade head
+
+fastapi dev app/main.py
