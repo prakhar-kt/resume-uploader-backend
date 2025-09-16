@@ -620,7 +620,7 @@ requires-dist = [
     { name = "boto3", specifier = ">=1.40.18" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.116.1" },
     { name = "python-decouple", specifier = ">=3.8" },
-    { name = "sqlalchemy", extras = ["asyncio"], specifier = ">=2.0.43" },
+    { name = "sqlalchemy", extras = ["asyncio"], specifier = ">=2.0.0" },
 ]
 
 [[package]]

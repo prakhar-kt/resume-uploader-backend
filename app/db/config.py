@@ -1,8 +1,9 @@
 from sqlalchemy.ext.asyncio import (
     create_async_engine,
+    async_sessionmaker,
     AsyncSession,
+    AsyncAttrs,
 )
-from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import DeclarativeBase
 from fastapi import Depends
 from typing import AsyncGenerator, Annotated
@@ -18,13 +19,13 @@ DATABASE_URL = f"postgresql+asyncpg://{DB_USER}:{DB_PASS}@localhost:{DB_PORT}/{D
 
 engine = create_async_engine(DATABASE_URL, echo=True, future=True)
 
-async_session = sessionmaker(
+async_session = async_sessionmaker(
     bind=engine,
     expire_on_commit=False,
     class_=AsyncSession
 )
 
-class Base(DeclarativeBase):
+class Base(AsyncAttrs, DeclarativeBase):
     pass
 
 async def get_session() -> AsyncGenerator[AsyncSession, None]:

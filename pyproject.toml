@@ -10,5 +10,5 @@ dependencies = [
     "boto3>=1.40.18",
     "fastapi[standard]>=0.116.1",
     "python-decouple>=3.8",
-    "sqlalchemy[asyncio]>=2.0.43",
+    "sqlalchemy[asyncio]>=2.0.0",
 ]
