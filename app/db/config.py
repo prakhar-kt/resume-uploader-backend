@@ -2,8 +2,7 @@ from sqlalchemy.ext.asyncio import (
     create_async_engine,
     AsyncSession,
 )
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm import DeclarativeBase
+from sqlalchemy.orm import sessionmaker, declarative_base
 from fastapi import Depends
 from typing import AsyncGenerator, Annotated
 from decouple import config
@@ -24,8 +23,7 @@ async_session = sessionmaker(
     class_=AsyncSession
 )
 
-class Base(DeclarativeBase):
-    pass
+Base = declarative_base()
 
 async def get_session() -> AsyncGenerator[AsyncSession, None]:
     async with async_session() as session:
